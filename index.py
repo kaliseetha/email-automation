@@ -802,8 +802,15 @@ def render_tracking_tab(store: WorkbookStore, mailbox: DemoMailboxStore) -> None
 def main() -> None:
     st.set_page_config(page_title="Candidate Account Tracker", layout="wide")
     st.title("Candidate Account Email Tracker")
+    st.markdown(
+        "A simple workspace for resource management teams to organize candidate "
+        "profiles, share each profile with multiple client accounts, and quickly see "
+        "which account responds first. Prepare candidate emails, track account-by-account "
+        "interest, and keep the hiring process moving from one place."
+    )
     st.caption(
-        "Demo mode: record candidate emails and account replies in local files; no Outlook connection is used."
+        "Demo mode: emails and replies are simulated and saved locally. No real emails "
+        "are sent, and no Outlook mailbox is accessed."
     )
 
     try:
@@ -817,8 +824,6 @@ def main() -> None:
             )
         st.stop()
 
-    st.caption("Excel tracker: candidate_tracker.xlsx (relative to the app folder)")
-    st.caption("Demo email and inbox file: demo_outlook.json (relative to the app folder)")
     try:
         mailbox = DemoMailboxStore(DEMO_MAILBOX_PATH)
     except (OSError, ValueError) as exc:
